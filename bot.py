@@ -264,10 +264,13 @@ async def broadcast(update, context):
 def main():
     if not TOKEN:
         raise SystemExit("BOT_TOKEN missing. Copy .env.example to .env and set your token.")
-    init_db()\n    app=Application.builder().token(TOKEN).build()
+    init_db()
+    app=Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start",start))
     app.add_handler(CommandHandler("help",help_cmd))
-    app.add_handler(CommandHandler(["gameprotection","game"],game_cmd))\n    app.add_handler(CommandHandler("protect", protect_cmd))\n    app.add_handler(CommandHandler("unprotect", unprotect_cmd))
+    app.add_handler(CommandHandler(["gameprotection","game"],game_cmd))
+    app.add_handler(CommandHandler("protect", protect_cmd))
+    app.add_handler(CommandHandler("unprotect",unprotect_cmd))
     app.add_handler(CommandHandler("ban",ban))
     app.add_handler(CommandHandler("unban",unban))
     app.add_handler(CommandHandler("mute",mute))
